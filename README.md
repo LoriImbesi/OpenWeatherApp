@@ -6,4 +6,4 @@ This weather app displays the weather for your zipcode. It uses the [OpenWeather
 
 #### Built with
 
-    *Flask
+    Flask
