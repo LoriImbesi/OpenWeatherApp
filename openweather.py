@@ -18,6 +18,8 @@ def index():
     return render_template('index.html')
 
 
+# Flask route that renders the weather_report template with data from api
+
 @app.route('/weather_report', methods=['POST'])
 def render_weather_report():
     zip_code = request.form['zipCode']
@@ -33,12 +35,16 @@ def render_weather_report():
                            temp=temp, feels_like=feels_like, weather=weather)
 
 
+# API call to openweathermap.org that returns data in JSON format
+
 def get_weather_results(zip_code, api_key):
     api_url = 'http://api.openweathermap.org/data/2.5/weather?zip={}&units=imperial&appid={}'.format(
         zip_code, api_key)
     r = requests.get(api_url)
     return r.json()
 
+
+# Gets API key from config file
 
 def get_api_key():
     config = configparser.ConfigParser()
