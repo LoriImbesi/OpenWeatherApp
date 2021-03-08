@@ -35,12 +35,14 @@ def render_weather_report():
                            temp=temp, feels_like=feels_like, weather=weather)
 
 
-# API call to openweathermap.org that returns data in JSON format
+# Make API call to openweathermap.org, store the response in "r". Data is returned
+# in json format.
 
 def get_weather_results(zip_code, api_key):
     api_url = 'http://api.openweathermap.org/data/2.5/weather?zip={}&units=imperial&appid={}'.format(
         zip_code, api_key)
     r = requests.get(api_url)
+    print("Status code:", r.status_code)
     return r.json()
 
 
